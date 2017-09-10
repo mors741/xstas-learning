@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title layout:title-pattern="$CONTENT_TITLE">Layout Title will be replaced by Page Title!</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/style.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<header th:include="fragments/header :: header"></header>
+<section layout:fragment="content" class="container"></section>
+<footer th:include="fragments/footer :: footer" class="navbar-fixed-bottom text-center"></footer>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<head>
+    <title>Икстас</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Your profile</h1>
+    <span th:text="${user.username}"></span> <br>
+    <span th:text="${user.firstName}"></span>
+    <span th:text="${user.lastName}"></span>
+
+    <form method="POST" th:action="@{/logout}">
+        <button type="submit">Logout</button>
+    </form>
+</div>
+</body>
+</html>
