@@ -12,27 +12,27 @@
 <h1>Register</h1>
 <form method="POST" th:object="${user}" th:action="@{/user/register}">
 
-    <label>First Name</label>:
-    <input type="text" th:field="*{firstName}"/>
-    <span th:if="${#fields.hasErrors('firstName')}" class="error" th:text="${#fields.errors('firstName')[0]}"></span>
-    <br/>
-
-    <label>Last Name</label>:
-    <input type="text" th:field="*{lastName}"/>
-    <span th:if="${#fields.hasErrors('lastName')}" class="error" th:text="${#fields.errors('lastName')[0]}"></span>
-    <br/>
-
     <label>Email</label>:
     <input type="text" th:field="*{email}"/>
     <span th:if="${#fields.hasErrors('email')}" class="error" th:text="${#fields.errors('email')[0]}"></span>
     <br/>
 
-    <label>Username</label>:
-    <input type="text" th:field="*{username}"/>
-    <span th:if="${#fields.hasErrors('username')}" class="error" th:text="${#fields.errors('username')[0]}"></span>
+    <label>Имя</label>:
+    <input type="text" th:field="*{firstName}"/>
+    <span th:if="${#fields.hasErrors('firstName')}" class="error" th:text="${#fields.errors('firstName')[0]}"></span>
     <br/>
 
-    <label>Password</label>:
+    <label>Фамилия</label>:
+    <input type="text" th:field="*{lastName}"/>
+    <span th:if="${#fields.hasErrors('lastName')}" class="error" th:text="${#fields.errors('lastName')[0]}"></span>
+    <br/>
+
+    <label>Отчество</label>:
+    <input type="text" th:field="*{patronymic}"/>
+    <span th:if="${#fields.hasErrors('patronymic')}" class="error" th:text="${#fields.errors('patronymic')[0]}"></span>
+    <br/>
+
+    <label>Пароль</label>:
     <input type="password" th:field="*{password}"/>
     <span th:if="${#fields.hasErrors('password')}" class="error" th:text="${#fields.errors('password')[0]}"></span>
     <br/>

@@ -35,13 +35,13 @@ public class UserController {
             return "registrationForm";
         }
         repository.save(user);
-        model.addAttribute("username", user.getUsername());
+        model.addAttribute("username", user.getEmail());
         return "redirect:/user/profile";
     }
 
     @RequestMapping("/profile")
     public String showUserProfile(Model model, Principal principal) {
-        model.addAttribute(repository.getByUsername(principal.getName()));
+        model.addAttribute(repository.getByEmail(principal.getName()));
         return "profile";
     }
 }

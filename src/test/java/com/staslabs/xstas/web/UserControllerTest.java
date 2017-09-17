@@ -17,7 +17,7 @@ public class UserControllerTest {
         User user = new User("John", "Snow", "bastard@spittr.com", "bastard", "123");
 
         UserRepository repository = mock(UserRepository.class);
-        when(repository.getByUsername("bastard")).thenReturn(user);
+        when(repository.getByEmail("bastard")).thenReturn(user);
 
         UserController controller = new UserController(repository);
         MockMvc mockMvc = standaloneSetup(controller).build();

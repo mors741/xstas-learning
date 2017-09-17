@@ -1,9 +1,8 @@
 package com.staslabs.xstas.data;
 
 import com.staslabs.xstas.data.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository {
-    void save(User user);
-
-    User getByUsername(String username);
+public interface UserRepository extends JpaRepository<User, Long> {
+    User getByEmail(String email);
 }
