@@ -1,6 +1,6 @@
 package com.staslabs.xstas.config;
 
-import com.staslabs.xstas.data.UserRepository;
+import com.staslabs.xstas.data.repositories.UserRepository;
 import com.staslabs.xstas.data.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

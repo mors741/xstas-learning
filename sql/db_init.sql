@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS `courses` (
   `cost` mediumint(9) unsigned DEFAULT NULL,
   `promotion` varchar(100) DEFAULT NULL,
   `trailer` varchar(100) DEFAULT NULL,
+  `wistia_project_id` varchar(30) DEFAULT NULL,
   `teacher` int(11) unsigned NOT NULL,
   `state` tinyint(4) unsigned NOT NULL,
   PRIMARY KEY (`course_id`),
@@ -59,16 +60,13 @@ CREATE TABLE IF NOT EXISTS `course_subscribers` (
 CREATE TABLE IF NOT EXISTS `formats` (
   `format_id` tinyint(4) unsigned NOT NULL AUTO_INCREMENT,
   `format_name` varchar(20) NOT NULL,
+  `bonus_points` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`format_id`),
   UNIQUE KEY `format_name` (`format_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы xstas.formats: ~3 rows (приблизительно)
+-- Дамп данных таблицы xstas.formats: ~0 rows (приблизительно)
 /*!40000 ALTER TABLE `formats` DISABLE KEYS */;
-INSERT INTO `formats` (`format_id`, `format_name`) VALUES
-	(3, 'playbuzz'),
-	(2, 'text'),
-	(1, 'video');
 /*!40000 ALTER TABLE `formats` ENABLE KEYS */;
 
 -- Дамп структуры для таблица xstas.moderations
@@ -111,14 +109,10 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `role_name` varchar(20) NOT NULL,
   PRIMARY KEY (`role_id`),
   UNIQUE KEY `role_name` (`role_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы xstas.roles: ~3 rows (приблизительно)
+-- Дамп данных таблицы xstas.roles: ~0 rows (приблизительно)
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` (`role_id`, `role_name`) VALUES
-  (0, 'Преподаватель'),
-  (1, 'Студент'),
-  (2, 'Модератор');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
 -- Дамп структуры для таблица xstas.states
@@ -129,13 +123,8 @@ CREATE TABLE IF NOT EXISTS `states` (
   UNIQUE KEY `state_name` (`state_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы xstas.states: ~4 rows (приблизительно)
+-- Дамп данных таблицы xstas.states: ~0 rows (приблизительно)
 /*!40000 ALTER TABLE `states` DISABLE KEYS */;
-INSERT INTO `states` (`state_id`, `state_name`) VALUES
-	(4, 'close'),
-	(2, 'moderated'),
-	(1, 'not_published'),
-	(3, 'open');
 /*!40000 ALTER TABLE `states` ENABLE KEYS */;
 
 -- Дамп структуры для таблица xstas.teasers
@@ -191,6 +180,22 @@ CREATE TABLE IF NOT EXISTS `units` (
 /*!40000 ALTER TABLE `units` DISABLE KEYS */;
 /*!40000 ALTER TABLE `units` ENABLE KEYS */;
 
+-- Дамп структуры для таблица xstas.unit_progress
+CREATE TABLE IF NOT EXISTS `unit_progress` (
+  `unit_progress_id` int(10) unsigned NOT NULL,
+  `student` int(10) unsigned NOT NULL,
+  `unit` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`unit_progress_id`),
+  KEY `student` (`student`),
+  KEY `unit` (`unit`),
+  CONSTRAINT `FK__units` FOREIGN KEY (`unit`) REFERENCES `units` (`unit_id`),
+  CONSTRAINT `FK__users` FOREIGN KEY (`student`) REFERENCES `users` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы xstas.unit_progress: ~0 rows (приблизительно)
+/*!40000 ALTER TABLE `unit_progress` DISABLE KEYS */;
+/*!40000 ALTER TABLE `unit_progress` ENABLE KEYS */;
+
 -- Дамп структуры для таблица xstas.users
 CREATE TABLE IF NOT EXISTS `users` (
   `user_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -204,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `email` (`email`),
   KEY `FK_users_roles` (`role`),
   CONSTRAINT `FK_users_roles` FOREIGN KEY (`role`) REFERENCES `roles` (`role_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы xstas.users: ~0 rows (приблизительно)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;

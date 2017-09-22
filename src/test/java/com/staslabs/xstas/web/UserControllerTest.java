@@ -1,7 +1,7 @@
 package com.staslabs.xstas.web;
 
 import com.staslabs.xstas.data.entity.User;
-import com.staslabs.xstas.data.UserRepository;
+import com.staslabs.xstas.data.repositories.UserRepository;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 

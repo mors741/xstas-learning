@@ -1,6 +1,6 @@
 package com.staslabs.xstas.web;
 
-import com.staslabs.xstas.data.CourseRepository;
+import com.staslabs.xstas.data.repositories.CourseRepository;
 import com.staslabs.xstas.data.dict.CategoryDictionary;
 import com.staslabs.xstas.data.dict.CourseLevelDictionary;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +36,7 @@ public class CourseController {
             Model model) {
         int categoryId = categoryDictionary.getId(category);
         int levelId = levelDictionary.getId(level);
-        model.addAttribute(courseRepository.find(categoryId, filter, levelId, price, sort));
+//        model.addAttribute(courseRepository.find(categoryId, filter, levelId, price, sort));
         return "searchCourses";
     }
 

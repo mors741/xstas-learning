@@ -3,14 +3,15 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layout}">
-<!--/*@thymesVar id="course" type="com.staslabs.xstas.data.entity.Course"*/-->
 <head>
-    <title>Wista Testing</title>
+    <title>Wisita Testing</title>
     <script th:src="@{/js/wistia.js}"></script>
+    <script src="//fast.wistia.com/assets/external/api.js" async></script>
+    <link rel="stylesheet" href="//fast.wistia.com/assets/external/uploader.css" />
 </head>
 <body>
 <div layout:fragment="content">
-
+    <div id="wistia_uploader" style="height:360px;width:640px;"></div>
 </div>
 </body>
 </html>
