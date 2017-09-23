@@ -4,10 +4,10 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "courses")
@@ -29,7 +29,7 @@ public class Course implements Serializable {
     @Getter @Setter private String description;
 
     @Column(name = "cost")
-    @Getter @Setter private int cost;
+    @Getter @Setter private Integer cost;
 
     @Size(max = 100)
     @Column(name = "promotion")
@@ -43,11 +43,14 @@ public class Course implements Serializable {
     @Column(name = "wistia_project_id")
     @Getter @Setter private String wistiaProjectId;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    @Getter @Setter private User student;
-
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "state")
     @Getter @Setter private State state;
+
+    @ManyToOne
+    @JoinColumn(name = "teacher", nullable = false)
+    @Getter @Setter private User teacher;
+
+    @OneToMany(mappedBy = "course")
+    @Getter @Setter private Set<Module> modules;
 }

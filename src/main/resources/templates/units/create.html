@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<!--/*@thymesVar id="unit" type="com.staslabs.xstas.data.entity.Unit"*/-->
+<!--/*@thymesVar id="modules" type="List<com.staslabs.xstas.data.entity.Module>"*/-->
+<!--/*@thymesVar id="formats" type="com.staslabs.xstas.data.entity.Format[]"*/-->
+<head>
+    <title>Создание урока</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Создание урока</h1>
+    <form method="POST" th:object="${unit}" th:action="@{/units/create}">
+        <label>Модуль</label>:
+        <select th:field="${modules}">
+            <option th:value="NULL" th:text="'Выберите модуль'"></option>
+            <option th:each="module : ${modules}" th:value="${module.getId()}" th:text="${module.getName()}"></option>
+        </select>
+        <br/>
+
+        <label>Название</label>:
+        <input type="text" th:field="*{name}"/>
+        <span th:if="${#fields.hasErrors('name')}" class="error" th:text="${#fields.errors('name')[0]}"></span>
+        <br/>
+
+        <label>Порядковый номер</label>:
+        <input type="number" th:field="*{order}"/>
+        <span th:if="${#fields.hasErrors('order')}" class="error" th:text="${#fields.errors('order')[0]}"></span>
+        <br/>
+
+        <label>Контент</label>:
+        <input type="text" th:field="*{content}"/>
+        <span th:if="${#fields.hasErrors('content')}" class="error" th:text="${#fields.errors('content')[0]}"></span>
+        <br/>
+
+        <label>Формат</label>:
+        <select th:field="${formats}">
+            <option th:value="NULL" th:text="'Выберите формат'"></option>
+            <option th:each="format : ${formats}" th:value="${format.getName()}" th:text="${format.getName()}"></option>
+        </select>
+        <br/>
+
+        <input type="submit" value="Добавить урок"/>
+    </form>
+</div>
+</body>
+</html>

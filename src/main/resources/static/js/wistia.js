@@ -29,7 +29,7 @@ _wapiq.push(function(W) {
     });
 });
 
-var unit = {id: 2, name: "a", order: 1, content: "b"};
+var unit = {id: 2, name: "a", order: 1, content: "b", format: 1, module: 1};
 console.log(unit);
 $.ajax({
     cache: false,

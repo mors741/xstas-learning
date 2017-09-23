@@ -3,14 +3,10 @@ package com.staslabs.xstas.web;
 import com.staslabs.xstas.data.entity.Unit;
 import com.staslabs.xstas.data.repositories.UnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.json.JsonParser;
-import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 @Controller
 @RequestMapping(path = "/wistia")

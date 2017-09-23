@@ -2,10 +2,7 @@ package com.staslabs.xstas.data.entity;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -34,4 +31,12 @@ public class Unit implements Serializable {
     @Size(max = 10000)
     @Column(name = "content")
     @Getter @Setter private String content;
+
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "format")
+    @Getter @Setter private Format format;
+
+    @ManyToOne
+    @JoinColumn(name = "module", nullable = false)
+    @Getter @Setter private Module module;
 }
