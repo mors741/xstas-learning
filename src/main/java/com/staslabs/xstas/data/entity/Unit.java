@@ -28,7 +28,6 @@ public class Unit implements Serializable {
     @Column(name = "unit_name")
     @Getter @Setter private String name;
 
-    @Size(max = 5000)
     @Column(name = "unit_order")
     @Getter @Setter private byte order;
 
