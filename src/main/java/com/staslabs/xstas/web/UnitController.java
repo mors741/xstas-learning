@@ -47,7 +47,7 @@ public class UnitController {
     }
 
     @RequestMapping(path = "/create", method = RequestMethod.POST)
-    public String processRegistration(Model model, @Valid Unit user, Errors errors) {
+    public String create(Model model, @Valid Unit user, Errors errors) {
         if (errors.hasErrors()) {
             return "units/create";
         }

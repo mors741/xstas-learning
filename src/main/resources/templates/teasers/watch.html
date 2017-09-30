@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<!--/*@thymesVar id="teaser" type="com.staslabs.xstas.data.entity.Teaser"*/-->
+<head>
+    <title>Просмотр тизера</title>
+    <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1 th:text="'Просмотр тизера ' + ${teaser.getName()}"></h1>
+    <p th:text="${teaser.getDescription()}"></p>
+    <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+        <div class="wistia_responsive_wrapper" style="height:70%;left:0;position:absolute;top:0;width:70%;">
+            <div th:class="${'videoFoam=true wistia_embed wistia_async_' + teaser.getVideo()}" style="height:70%;width:70%">&nbsp;</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
