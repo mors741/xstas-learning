@@ -16,6 +16,7 @@ import java.util.Set;
 public class Course implements Serializable {
 
     @Id
+    @GeneratedValue
     @Column(name = "course_id")
     @Getter @Setter private long id;
 

@@ -11,9 +11,14 @@
 <div layout:fragment="content">
     <h1>Детально</h1>
     <span class="courseName" th:text="${course.name}"></span>
-    <div class="courseInfo">
-        <span class="coursePrice" th:text="${course.cost + '$'}"></span>
-    </div>
+    <button onclick="document.getElementById('new-module-form').style.display='block'">Создать модуль</button>
+    <form method="POST" th:object="${course}" style="display:none" id="new-module-form">
+
+        <label>Email</label>:
+        <input type="text" th:field="*{description}"/>
+
+        <input type="submit" value="Ага"/>
+    </form>
 </div>
 </body>
 </html>

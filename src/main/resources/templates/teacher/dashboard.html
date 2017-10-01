@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<!--/*@thymesVar id="courseList" type="java.util.List<com.staslabs.xstas.data.entity.Course>"*/-->
+<head>
+    <title>Икстас</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <a th:href="@{/teacher/new-course}">Создать курс</a>
+    <h1>Курсы</h1>
+    <ul>
+        <li th:each="course : ${courseList}" th:id="'course_' + ${course.id}">
+            <a th:text="${course.name}" th:href="@{/course/{course_id}(course_id = ${course.id})}"></a>
+
+            <div class="courseInfo">
+                <span class="coursePrice" th:text="${course.cost + '$'}"></span>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

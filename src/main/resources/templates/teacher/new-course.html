@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<!--/*@thymesVar id="courseList" type="java.util.List<com.staslabs.xstas.data.entity.Course>"*/-->
+<!--/*@thymesVar id="course" type="com.staslabs.xstas.data.entity.Course"*/-->
+<head>
+    <title>Икстас</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="h1 text-center create-course-title">Создать новый курс</div>
+    <div class="modal-content-wrapper modal-wrapper-md fancybox-inner-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Давайте приступим</h4>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="$([type=submit], this).attr('disabled', true);" name="create-course-form"
+                      th:action="@{/teacher/new-course}" id="create-course-form" method="post" th:object="${course}">
+                    <div>
+                        <div class="form-field-container  labeled form-group" id="form-item-title"><label
+                                class="control-label " for="id_title">Нужно лишь ввести рабочий заголовок:</label>
+                            <div id="tooltip-reference-title" class="tooltip-reference pos-r ">
+                                <input type="text" th:field="*{name}"
+                                       class=" text-input ch-count-field ud-textinput textinput textInput form-control"
+                                       data-max-length="60" data-purpose="course-title" data-show-counter="true"
+                                       id="id_title" maxlength="60" minlength="2"
+                                       placeholder="Например, научитесь пользоваться Photoshop CS6 с нуля">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-actions">
+                        <div class="submit-row"><input name="submit" value="Сохранить и начать!"
+                                                       class="btn btn-primary "
+                                                       id="submit-id-submit" data-purpose="do-create-course"
+                                                       type="submit">
+
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
