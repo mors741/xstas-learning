@@ -18,6 +18,7 @@
 <div layout:fragment="content">
     <h1>Создание тизера</h1>
     <form method="POST" th:object="${teaser}" th:action="@{/teasers/create}">
+        <input type="hidden" th:field="*{id}">
         <label>Название</label>:
         <input type="text" th:field="*{name}"/>
         <span th:if="${#fields.hasErrors('name')}" class="error" th:text="${#fields.errors('name')[0]}"></span>
@@ -29,20 +30,25 @@
         <br/>
 
         <div th:if="${teaser.id != 0}">
-            <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
-                <div class="wistia_responsive_wrapper" style="height:70%;left:0;position:absolute;top:0;width:70%;">
-                    <div th:class="${'videoFoam=true wistia_embed wistia_async_' + teaser.getVideo()}" style="height:10%;width:10%;">&nbsp;</div>
+            <div class="wistia_responsive_padding" style="padding:0 0 0 0;position:relative;">
+                <div class="wistia_responsive_wrapper" style="left:0;position:absolute;top:0;">
+                    <input type="hidden" th:value="${teaser.getVideo()}" id="existence-video-id">
+                    <div th:class="${'videoFoam=true wistia_embed wistia_async_' + teaser.getVideo()}">&nbsp;</div>
                 </div>
             </div>
-            <br/>
-            <button >Загрузить новое видео</button>
-            <div id="wistia_uploader_new" style="height:360px;width:640px;"></div>
+            <div style="padding:30% 0 0 0;position:relative;">
+                <button type="button" id="load-new-video" style="left:475px;position:absolute;top:100px;">Загрузить новое видео</button>
+            </div>
+            <div class="wistia_responsive_padding" style="padding:0 0 0 0;position:relative;" id="new-video-block">
+                <div class="wistia_responsive_wrapper" style="left:700px;position:absolute;top:-340px;">
+                    <div id="wistia_uploaderNew" style="height:300px;width:400px;"></div>
+                </div>
+            </div>
         </div>
 
         <div th:th:if="${teaser.id == 0}" id="wistia_uploader" style="height:360px;width:640px;"></div>
 
         <input type="hidden" th:field="*{video}" id="video"/>
-        <br/>
 
         <input type="submit" value="Добавить тизер"/>
     </form>
