@@ -51,4 +51,10 @@ public class TeacherController {
         model.addAttribute(courseRepository.getById(id));
         return "teacher/course";
     }
+
+    @RequestMapping(path = "/course/{id}", method = RequestMethod.POST)
+    public String editCourse(@PathVariable("id") long id, Course course, Model model) {
+        System.out.println(course.getDescription());
+        return "teacher/course";
+    }
 }
